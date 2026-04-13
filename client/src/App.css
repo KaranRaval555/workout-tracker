@@ -1,0 +1,136 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap");
+:root {
+  --base: #191724;
+  --surface: #1f1d2e;
+  --overlay: #26233a;
+  --muted: #6e6a86;
+  --subtle: #908caa;
+  --text: #e0def4;
+  --love: #eb6f92;
+  --gold: #f6c177;
+  --rose: #ebbcba;
+  --pine: #31748f;
+  --foam: #9ccfd8;
+  --iris: #c4a7e7;
+  --highlight-low: #21202e;
+  --highlight-med: #403d52;
+  --highlight-high: #524f67;
+}
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: black;
+  min-height: 100vh;
+  color: var(--pine);
+  font-family: "Space Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 2rem;
+  padding: 1em;
+}
+
+nav li {
+  list-style: none;
+}
+
+nav button {
+  border: none;
+  height: 1em;
+}
+
+nav button svg {
+  width: 1em;
+  height: 1em;
+}
+
+nav button:hover {
+  transition: 0.1s ease-in-out;
+  color: cyan;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.form-wrapper {
+  min-height: 80vh;
+  display: flex;
+  font-size: clamp(0.8rem, 2vw, 2rem);
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  max-width: 80%;
+  gap: 1em;
+  padding: 3em 2em;
+  box-shadow: 0 0 5px 5px cyan;
+  border-radius: 0.5em;
+}
+
+input:focus {
+  transition: 0.1s ease-in-out;
+  border: 2px solid cyan;
+}
+
+input,
+button {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+input {
+  background-color: transparent;
+  outline: none;
+  color: rgba(0, 255, 255, 0.5);
+  width: 100%;
+  text-align: center;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  border: 1px solid var(--pine);
+}
+
+button {
+  cursor: pointer;
+  font-size: 0.8em;
+  background-color: transparent;
+  font-size: inherit;
+  opacity: 0.8;
+  color: var(--pine);
+}
+
+.submit-btn {
+  outline: none;
+  font-size: 0.7em;
+  border: 2px solid var(--pine);
+  padding: 0.5em 1em;
+  border-radius: 1em;
+  margin-top: 0.5em;
+}
+
+.submit-btn:hover {
+  transition: 0.1s ease-in-out;
+  background-color: var(--pine);
+  border: 1px solid var(--pine);
+  color: black;
+}
+.toggle-btn {
+  text-decoration: underline dotted;
+  font-size: 0.8em;
+  border: none;
+}
