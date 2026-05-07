@@ -1,6 +1,4 @@
 import { useState } from "react";
-import openIcon from "../assets/open.svg"
-import closeIcon from "../assets/close.svg"
 
 function Navbar({ handleClick }: { handleClick: () => void }) {
   const [isOpen, setIsOpen] = useState(false);
