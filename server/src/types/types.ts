@@ -1,4 +1,10 @@
-export type workout = {
+export type Workout = {
+  id: number;
   name: string;
-  date: Date;
+};
+
+export type Exercise = {
+  id: number;
+  name: string;
+  target_muscle: string;
 };

@@ -1,4 +1,10 @@
-import { Inject, Injectable, UnauthorizedException } from '@nestjs/common';
+import {
+  HttpCode,
+  HttpStatus,
+  Inject,
+  Injectable,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { Pool } from 'pg';
 import { CreateUserDto } from './dto/create-user.dto';
 import { DB_CONN } from '../db/db.module';
@@ -21,14 +27,15 @@ export class AuthService {
     @Inject(DB_CONN) private db: Pool,
     private jwtService: JwtService,
   ) {}
+  @HttpCode(HttpStatus.CREATED)
   async signUp(user: CreateUserDto) {
     const { username, email, password } = user;
     const hashed = await bcrypt.hash(password, 10);
-    const result = await this.db.query<User>(
+    await this.db.query<User>(
       'INSERT INTO users (username, email, password) values($1, $2, $3) RETURNING *',
       [username, email, hashed],
     );
-    return result.rows[0];
+    return { message: 'User account created successfully' };
   }
   async login({ username, email, password }: UpdateUserDto) {
     if (!username && !email) {

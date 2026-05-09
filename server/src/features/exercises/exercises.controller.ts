@@ -1,10 +1,12 @@
-import { Controller } from '@nestjs/common';
+import { Body, Controller, Post } from '@nestjs/common';
+import { ExercisesService } from './exercises.service';
+import { CreateExerciseDto } from './dto/create-exercise.dto';
 
 @Controller('exercises')
-export class ExercisesController {}
-
-// each exercise will have following fields for ex:
-// name: "pull ups"
-// targetMuscle: "Back"
-// id: should i make this depend on workout so an exercise can have same id in different workouts i'm not sure
-// controllers/id to get exercise
+export class ExercisesController {
+  constructor(private readonly exercisesService: ExercisesService) {}
+  @Post()
+  createExercise(@Body() dto: CreateExerciseDto) {
+    return this.exercisesService.createExercise(dto);
+  }
+}
