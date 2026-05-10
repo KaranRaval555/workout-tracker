@@ -1,18 +1,16 @@
-import { HttpCode, HttpStatus, Inject, Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
+import { DB_CONN } from '../db/db.module';
 import { Pool } from 'pg';
-import { DB_CONN } from 'src/modules/db/db.module';
-import { Exercise } from 'src/types/types';
 import { CreateExerciseDto } from './dto/create-exercise.dto';
+import { Exercise } from 'src/types/types';
 
 @Injectable()
-export class ExercisesService {
+export class ExercisesRepository {
   constructor(@Inject(DB_CONN) private db: Pool) {}
-  @HttpCode(HttpStatus.CREATED)
-  async createExercise(exercise: CreateExerciseDto) {
+  async create(exercise: CreateExerciseDto) {
     await this.db.query<Exercise>(
       `INSERT INTO exercises(name, target_muscle) values($1, $2) RETURNING *`,
       [exercise.name, exercise.target_muscle],
     );
-    return { message: 'Exercise added' };
   }
 }

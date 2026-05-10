@@ -1,11 +1,10 @@
 import { Module } from '@nestjs/common';
 import { ExercisesController } from './exercises.controller';
-import { DatabaseModule } from 'src/modules/db/db.module';
 import { ExercisesService } from './exercises.service';
+import { ExercisesRepository } from './exercises.repository';
 
 @Module({
   controllers: [ExercisesController],
-  imports: [DatabaseModule],
-  providers: [ExercisesService],
+  providers: [ExercisesService, ExercisesRepository],
 })
 export class ExercisesModule {}
